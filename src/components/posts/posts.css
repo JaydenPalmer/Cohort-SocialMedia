@@ -1,0 +1,29 @@
+.posts-container {
+  margin: 1rem 5rem 0rem 5rem;
+}
+
+.posts-container > h2 {
+  margin-top: 0;
+}
+
+.posts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.post {
+  background-color: lightblue;
+  border: 1px solid lightskyblue;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.post > * {
+  padding: 0.5rem;
+}
+
+.post-info {
+  color: var(--outline);
+  font-family: "Roboto", sans-serif;
+}
