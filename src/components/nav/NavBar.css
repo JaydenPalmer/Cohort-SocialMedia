@@ -1,7 +1,7 @@
 .navbar {
   display: flex;
   flex-wrap: nowrap;
-  background-color: var(--dark);
+  background-color: #64403e;
   margin: 0;
   width: 100%;
   padding: 0.5rem;
@@ -11,10 +11,11 @@
   flex-basis: 20%;
   list-style-type: none;
   text-align: center;
-  color: var(--offWhite);
+  color: #6c6061;
 }
 
 .navbar-link {
+  color: #8c7d7e;
   text-decoration: none;
   font-family: "Quicksand", sans-serif;
   letter-spacing: 1px;
@@ -25,5 +26,5 @@
 }
 
 .navbar-link:hover {
-  color: var(--primary);
+  color: whitesmoke;
 }

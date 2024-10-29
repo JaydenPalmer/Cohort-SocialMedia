@@ -8,11 +8,7 @@ export const PostFilterDropdown = ({ topic, setSelectedTopicId }) => {
       <select onChange={handleTopicFilter}>
         <option value={0}>All Topics</option>
         {topic.map((topicObj) => (
-          <option
-            className="dropdown-content"
-            key={topicObj.id}
-            value={topicObj.id}
-          >
+          <option key={topicObj.id} value={topicObj.id}>
             {topicObj.name}
           </option>
         ))}

@@ -1,0 +1,107 @@
+.Dposts-container {
+  margin: 1rem 5rem 0rem 5rem;
+}
+
+.Dposts-container > h2 {
+  margin-top: 0;
+}
+
+#Dtitles {
+  font-stretch: expanded;
+  display: flex;
+  justify-content: center;
+  color: #838e83;
+  font-size: 4rem;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  padding: 20px;
+}
+
+.Dposts {
+  display: flex;
+  justify-content: center;
+}
+
+.Dpost {
+  background-color: #838e83;
+  border: 1px solid #64403e;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Split into two columns */
+  gap: 1rem;
+  margin: 20px;
+}
+
+.Dpost > * {
+  padding: 0.5rem;
+}
+
+/* Left side content */
+.Dpost-info-title {
+  text-decoration: none;
+  color: #c9cebd;
+  font-family: "Roboto", sans-serif;
+  grid-column: 1; /* Place in first column */
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.Dpost-info-title span {
+  font-weight: bold;
+  min-width: 100px; /* Keeps labels aligned */
+}
+
+/* Right side content */
+.Dpost-body {
+  grid-column: 2; /* Place in second column */
+  grid-row: 1 / span 3; /* Span multiple rows */
+  color: #c9cebd;
+  font-family: "Roboto", sans-serif;
+  padding: 1rem;
+  border-left: 1px solid #64403e; /* Separator line */
+  min-height: 200px; /* Minimum height for content */
+}
+
+/* Footer styling */
+.Dfooter {
+  grid-column: 1 / -1; /* Span full width */
+  border-top: 1px solid #64403e;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Dpost-info-likes {
+  color: #c9cebd;
+  font-family: "Roboto", sans-serif;
+  padding: 0.5rem;
+  background-color: rgba(201, 206, 189, 0.1);
+  border-radius: 0.25rem;
+  display: flex;
+  justify-content: end;
+}
+
+.Dpost-info-date {
+  color: #c9cebd;
+  font-family: "Roboto", sans-serif;
+  padding: 0.5rem;
+  background-color: rgba(201, 206, 189, 0.1);
+  border-radius: 0.25rem;
+}
+
+.Dpost-info-likes-btn {
+  color: #c9cebd;
+  font-family: "Roboto", sans-serif;
+  padding: 0.5rem;
+  background-color: rgba(201, 206, 189, 0.1);
+  border-color: white;
+  border-radius: 0.25rem;
+  display: flex;
+  justify-content: end;
+}

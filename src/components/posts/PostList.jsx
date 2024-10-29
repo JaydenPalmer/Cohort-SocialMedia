@@ -6,6 +6,7 @@ import { PostFilterDropdown } from "./PostFilterDropdown";
 import { Post } from "./Post";
 import "./posts.css";
 import "./dropdown.css";
+import "./PostDetails.css";
 import { Link } from "react-router-dom";
 
 export const PostList = () => {
@@ -41,10 +42,11 @@ export const PostList = () => {
 
   return (
     <div className="posts-container">
-      <h2>Posts</h2>
+      <h2 id="titles">Posts</h2>
       <section>
         {
           <PostFilterDropdown
+            className="dropdown-content"
             topic={allTopics}
             setSelectedTopicId={setSelectedTopicId}
           />

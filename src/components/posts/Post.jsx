@@ -33,13 +33,12 @@ export const Post = ({ post }) => {
 
   return (
     <section className="post">
-      <Link to={`/posts/${post.id}`}>
+      <Link className="post-info-title" to={`/posts/${post.id}`}>
         <h2 className="post-info">{post.title}</h2>
       </Link>
-      <div>
-        <div className="post-info">{assignedTopics?.name}</div>
-        <div className="post-info">{assignedLikes} Likes</div>
-      </div>
+
+      <div className="post-info">{assignedTopics?.name}</div>
+      <div className="post-info">{assignedLikes} Likes</div>
     </section>
   );
 };

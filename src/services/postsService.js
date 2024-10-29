@@ -3,7 +3,7 @@ export const getPosts = () => {
 };
 
 export const getPostByPostId = (postId) => {
-  return fetch(`http://localhost:8088/posts/${postId}`).then((res) =>
-    res.json()
-  );
+  return fetch(
+    `http://localhost:8088/posts/${postId}?_expand=user&_expand=topic&_embed=postLikes`
+  ).then((res) => res.json());
 };
