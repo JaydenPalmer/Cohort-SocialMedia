@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getPostByPostId } from "../../services/postsService";
 import { PostDetailsLikes } from "../likes/PostDetailsLikes";
+import { getTheseLikes } from "../../services/postLikesService";
 
 export const PostDetails = () => {
   const [post, setPost] = useState({});
@@ -13,13 +14,18 @@ export const PostDetails = () => {
     getPostByPostId(postId).then((postObj) => {
       //data comes through as an object, not an array.
       //quite strange
-      const postLikes = postObj.postLikes;
       const whoPostedThis = postObj.userId;
-      setLikes(postLikes);
       setPost(postObj);
       setWhoPosted(whoPostedThis);
     });
   }, [postId]);
+
+  useEffect(() => {
+    getTheseLikes(postId).then((postObj) => {
+      const postLikes = postObj;
+      setLikes(postLikes);
+    });
+  }, [like]);
 
   return (
     <div className="Dpost-container">
@@ -44,7 +50,7 @@ export const PostDetails = () => {
             {post.created}
           </div>
 
-          <div className="Dpost-info-likes">
+          <div>
             <PostDetailsLikes
               whoPosted={whoPosted}
               numberOfLikes={likes}

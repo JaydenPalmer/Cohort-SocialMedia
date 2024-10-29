@@ -105,3 +105,14 @@
   display: flex;
   justify-content: end;
 }
+
+.Dpost-info-edit-btn {
+  color: #c9cebd;
+  font-family: "Roboto", sans-serif;
+  padding: 0.5rem;
+  background-color: rgba(201, 206, 189, 0.1);
+  border-color: white;
+  border-radius: 0.25rem;
+  display: flex;
+  justify-content: center;
+}

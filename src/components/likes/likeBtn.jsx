@@ -1,3 +1,5 @@
-export const likeBtn = () => {
-  // we need the post Id so we can properly send
+import { sendLike } from "../../services/postLikesService";
+
+export const handleLikeBtn = (postId, currentUserId) => {
+  sendLike(postId, currentUserId);
 };

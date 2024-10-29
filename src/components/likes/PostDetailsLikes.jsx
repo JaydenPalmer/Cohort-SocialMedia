@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { likeBtn } from "./likeBtn";
+import { handleLikeBtn } from "./likeBtn";
 
 export const PostDetailsLikes = ({ whoPosted, numberOfLikes, postId }) => {
   const currentUserId = useMemo(() => {
@@ -11,19 +11,29 @@ export const PostDetailsLikes = ({ whoPosted, numberOfLikes, postId }) => {
   useEffect(() => {
     if (whoPosted === currentUserId) {
       setIsUser(true);
-      console.log(currentUserId);
+      //console.log(currentUserId);
+    } else {
+      setIsUser(false);
     }
   }, [whoPosted, currentUserId]);
 
   if (!isUser) {
     return (
-      <button onClick={likeBtn(postId)} className="Dpost-info-likes-btn">
-        {numberOfLikes.length ? numberOfLikes.length : "Be The First Like!"}
+      <button
+        onClick={() => handleLikeBtn(postId, currentUserId)}
+        className="Dpost-info-likes-btn"
+      >
+        {numberOfLikes?.length ? numberOfLikes.length : "Be The First Like!"}
       </button>
     );
   } else {
     return (
-      <div>{numberOfLikes.length ? numberOfLikes.length : "NO LIKES"}</div>
+      <div>
+        <button className="Dpost-info-edit-btn">EDIT POST</button>
+        <div className="Dpost-info-likes">
+          {numberOfLikes?.length ? numberOfLikes.length : "NO LIKES"}
+        </div>
+      </div>
     );
   }
 };
