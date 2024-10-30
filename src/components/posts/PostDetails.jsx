@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getPostByPostId } from "../../services/postsService";
 import { PostDetailsLikes } from "../likes/PostDetailsLikes";
-import { getTheseLikes } from "../../services/postLikesService";
+import { getLikes } from "../../services/postLikesService";
 
 export const PostDetails = () => {
   const [post, setPost] = useState({});
-  const [likes, setLikes] = useState([]);
+  const [likes, setLikes] = useState({});
   const [whoPosted, setWhoPosted] = useState({});
+  const [refreshLikes, setRefreshLikes] = useState(false);
   const { postId } = useParams();
 
   useEffect(() => {
@@ -21,11 +22,14 @@ export const PostDetails = () => {
   }, [postId]);
 
   useEffect(() => {
-    getTheseLikes(postId).then((postObj) => {
-      const postLikes = postObj;
-      setLikes(postLikes);
+    getLikes().then((likeArray) => {
+      const filteredLikes = likeArray.filter(
+        (item) => item.postId === whoPosted
+      );
+      console.log(filteredLikes);
+      setLikes(filteredLikes);
     });
-  }, [like]);
+  }, [whoPosted, refreshLikes]);
 
   return (
     <div className="Dpost-container">
@@ -55,6 +59,7 @@ export const PostDetails = () => {
               whoPosted={whoPosted}
               numberOfLikes={likes}
               postId={post.id}
+              onLikeChange={() => setRefreshLikes((prev) => !prev)}
             />
           </div>
         </footer>

@@ -2,12 +2,6 @@ export const getLikes = () => {
   return fetch("http://localhost:8088/postLikes").then((res) => res.json());
 };
 
-export const getTheseLikes = (postId) => {
-  return fetch(`http://localhost:8088/postLikes/${postId}`).then((res) =>
-    res.json()
-  );
-};
-
 export const sendLike = (postId, currentUserId) => {
   const passTheLike = {
     userId: currentUserId,
