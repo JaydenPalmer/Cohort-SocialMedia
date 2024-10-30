@@ -3,6 +3,7 @@ import { PostFilterDropdown } from "../posts/PostFilterDropdown";
 import { useState, useEffect, useMemo } from "react";
 import "./NewPost.css";
 import { sendPost } from "../../services/postsService";
+import { useNavigate } from "react-router-dom";
 
 export const NewPost = () => {
   const [allTopics, setAllTopics] = useState([]);
@@ -11,6 +12,8 @@ export const NewPost = () => {
   const [date, setDate] = useState(new Date());
   const [selectedTopicId, setSelectedTopicId] = useState(0);
   const [sendThePostBtn, setSendThePostBtn] = useState(false);
+
+  const navigate = useNavigate();
 
   const currentUserId = useMemo(() => {
     return JSON.parse(localStorage.getItem("learning_user"))?.id;
@@ -32,7 +35,10 @@ export const NewPost = () => {
         setTitle("");
         setSelectedTopicId(0);
         setSendThePostBtn(false);
+        navigate("/myposts");
       }
+    } else {
+      setSendThePostBtn(false);
     }
   }, [sendThePostBtn, title, body, selectedTopicId]);
 

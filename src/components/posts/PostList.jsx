@@ -7,7 +7,6 @@ import { Post } from "./Post";
 import "./posts.css";
 import "./dropdown.css";
 import "./PostDetails.css";
-import { Link } from "react-router-dom";
 
 export const PostList = () => {
   const [allPosts, setAllPosts] = useState([]);

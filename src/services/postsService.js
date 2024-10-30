@@ -25,3 +25,9 @@ export const sendPost = (selectedTopicId, currentUserId, body, title, date) => {
     body: JSON.stringify(passThePost),
   }).then((res) => res.json());
 };
+
+export const deletePost = (postId) => {
+  return fetch(`http://localhost:8088/posts/${postId}`, {
+    method: "DELETE",
+  });
+};

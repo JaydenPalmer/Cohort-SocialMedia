@@ -116,3 +116,15 @@
   display: flex;
   justify-content: center;
 }
+
+.Dpost-info-delete-btn {
+  color: #72071d;
+  font-family: "Roboto", sans-serif;
+  padding: 0.5rem;
+  background-color: #8d07221a;
+  border-color: white;
+  border-radius: 0.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -4,6 +4,7 @@ import { PostList } from "../components/posts/PostList";
 import { NavBar } from "../components/nav/NavBar";
 import { PostDetails } from "../components/posts/PostDetails";
 import { NewPost } from "../components/newpost/NewPost";
+import { MyPosts } from "../components/myposts/MyPosts";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -32,6 +33,9 @@ export const ApplicationViews = () => {
         </Route>
         <Route path="newpost">
           <Route index element={<NewPost />} />
+        </Route>
+        <Route path="myposts">
+          <Route index element={<MyPosts />} />
         </Route>
       </Route>
     </Routes>

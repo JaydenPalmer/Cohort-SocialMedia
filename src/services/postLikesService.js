@@ -3,6 +3,7 @@ export const getLikes = () => {
 };
 
 export const sendLike = (postId, currentUserId) => {
+  console.log("post sent");
   const passTheLike = {
     userId: currentUserId,
     postId: postId,
