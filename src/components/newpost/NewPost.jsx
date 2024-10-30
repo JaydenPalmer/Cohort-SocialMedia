@@ -2,13 +2,15 @@ import { getTopics } from "../../services/topicsService";
 import { PostFilterDropdown } from "../posts/PostFilterDropdown";
 import { useState, useEffect, useMemo } from "react";
 import "./NewPost.css";
+import { sendPost } from "../../services/postsService";
 
 export const NewPost = () => {
   const [allTopics, setAllTopics] = useState([]);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(new Date());
   const [selectedTopicId, setSelectedTopicId] = useState(0);
+  const [sendThePostBtn, setSendThePostBtn] = useState(false);
 
   const currentUserId = useMemo(() => {
     return JSON.parse(localStorage.getItem("learning_user"))?.id;
@@ -19,7 +21,20 @@ export const NewPost = () => {
       setAllTopics(topicsArray);
       console.log("topics have been gathered");
     });
-  }, []);
+  }, [sendThePostBtn]);
+
+  useEffect(() => {
+    if (selectedTopicId > 0 && title && body) {
+      if (sendThePostBtn) {
+        console.log("we are in the post effect");
+        sendPost(selectedTopicId, currentUserId, body, title, date);
+        setBody("");
+        setTitle("");
+        setSelectedTopicId(0);
+        setSendThePostBtn(false);
+      }
+    }
+  }, [sendThePostBtn, title, body, selectedTopicId]);
 
   return (
     <div className="Nposts-container">
@@ -28,6 +43,7 @@ export const NewPost = () => {
         <PostFilterDropdown
           className="dropdown-content"
           topic={allTopics}
+          value={selectedTopicId}
           setSelectedTopicId={setSelectedTopicId}
         />
         <div className="Npost-info-title">
@@ -35,19 +51,29 @@ export const NewPost = () => {
           <input
             className="Npost-info-input"
             type="text"
-            placeholder="TITLE"
+            placeholder={title}
+            value={title}
+            onChange={(event) => setTitle(event.target.value)}
           ></input>
         </div>
         <div className="Npost-info-title">
           <span>Body : </span>
-          <input
+          <textarea
+            value={body}
             className="Npost-info-input"
             type="text"
-            placeholder="BODY"
-          ></input>
+            placeholder={body}
+            onChange={(event) => setBody(event.target.value)}
+          />
         </div>
         <footer className="Nfooter">
-          <button id="Npost-info-post-btn">MAKE POST</button>
+          <div className="Npost-info-date">{date.toLocaleDateString()}</div>
+          <button
+            id="Npost-info-post-btn"
+            onClick={() => setSendThePostBtn(true)}
+          >
+            MAKE POST
+          </button>
         </footer>
       </section>
     </div>
