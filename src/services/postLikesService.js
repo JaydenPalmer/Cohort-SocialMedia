@@ -17,3 +17,15 @@ export const sendLike = (postId, currentUserId) => {
     body: JSON.stringify(passTheLike),
   }).then((res) => res.json());
 };
+
+export const getLikesByUserId = (userId) => {
+  return fetch(
+    `http://localhost:8088/postLikes?userId=${userId}&_expand=post`
+  ).then((response) => response.json());
+};
+
+export const deleteLike = (likeId) => {
+  return fetch(`http://localhost:8088/postLikes/${likeId}`, {
+    method: "DELETE",
+  });
+};

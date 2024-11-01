@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { handleLikeBtn } from "./likeBtn";
+import { useNavigate } from "react-router-dom";
 
 export const PostDetailsLikes = ({
   whoPosted,
@@ -13,6 +14,12 @@ export const PostDetailsLikes = ({
 
   const [isUser, setIsUser] = useState(false);
 
+  const navigate = useNavigate();
+
+  const handleEdit = () => {
+    navigate("/edit", { state: { postId: postId } });
+  };
+
   useEffect(() => {
     if (whoPosted === currentUserId) {
       setIsUser(true);
@@ -25,6 +32,7 @@ export const PostDetailsLikes = ({
   const handleLike = async () => {
     await handleLikeBtn(postId, currentUserId);
     onLikeChange();
+    navigate("/favorites");
   };
 
   if (!isUser) {
@@ -36,7 +44,9 @@ export const PostDetailsLikes = ({
   } else {
     return (
       <div>
-        <button className="Dpost-info-edit-btn">EDIT POST</button>
+        <button className="Dpost-info-edit-btn" onClick={handleEdit}>
+          EDIT POST
+        </button>
         <div className="Dpost-info-likes">
           {numberOfLikes.length ? numberOfLikes.length : "NO LIKES"}
         </div>

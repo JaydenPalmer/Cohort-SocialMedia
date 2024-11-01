@@ -35,7 +35,6 @@ export const MyPosts = () => {
         console.error("Failed to delete post:", error);
       }
     };
-    //deletePost(postId);
   };
 
   return (

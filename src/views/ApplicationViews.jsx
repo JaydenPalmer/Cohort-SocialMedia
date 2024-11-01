@@ -5,6 +5,9 @@ import { NavBar } from "../components/nav/NavBar";
 import { PostDetails } from "../components/posts/PostDetails";
 import { NewPost } from "../components/newpost/NewPost";
 import { MyPosts } from "../components/myposts/MyPosts";
+import { EditPost } from "../components/edit/EditPost";
+import { Favorites } from "../components/favorites/Favorites";
+import { Profile } from "../components/profile/Profile";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -22,7 +25,7 @@ export const ApplicationViews = () => {
         path="/"
         element={
           <>
-            <NavBar />
+            <NavBar currentUser={currentUser} />
             <Outlet />
           </>
         }
@@ -36,6 +39,15 @@ export const ApplicationViews = () => {
         </Route>
         <Route path="myposts">
           <Route index element={<MyPosts />} />
+        </Route>
+        <Route path="edit">
+          <Route index element={<EditPost />} />
+        </Route>
+        <Route path="favorites">
+          <Route index element={<Favorites />} />
+        </Route>
+        <Route path="profile">
+          <Route index path=":userId" element={<Profile />} />
         </Route>
       </Route>
     </Routes>
